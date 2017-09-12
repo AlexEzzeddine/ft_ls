@@ -6,7 +6,7 @@
 /*   By: aezzeddi <aezzeddi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/16 22:43:45 by aezzeddi          #+#    #+#             */
-/*   Updated: 2017/09/12 07:59:59 by aezzeddi         ###   ########.fr       */
+/*   Updated: 2017/09/12 08:05:28 by aezzeddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,6 @@
 
 t_ls_options g_ls_options = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 const t_longest g_default_length = {0, 0, 0, 1, 0, 0};
-
-void free_entity(void *content, size_t size)
-{
-	t_entity *entity;
-
-	(void) size;
-	entity = content;
-	free(entity->name);
-	free(entity->path);
-	free(entity->stats);
-	free(entity->owner->username);
-	free(entity->owner->groupname);
-	free(entity->owner);
-	ft_lstdel(&entity->entities, &free_entity);
-	free(entity);
-}
 
 void	display_files(t_list *files)
 {
