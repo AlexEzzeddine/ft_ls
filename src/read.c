@@ -6,7 +6,7 @@
 /*   By: aezzeddi <aezzeddi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 18:56:21 by aezzeddi          #+#    #+#             */
-/*   Updated: 2017/09/09 22:15:15 by aezzeddi         ###   ########.fr       */
+/*   Updated: 2017/09/12 07:59:42 by aezzeddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_entity	*create_entity(char *name, char *parent_path)
 	entity->entities = NULL;
 	entity->total_blocks = 0;
 	entity->error = 0;
-	if (lstat(entity->path, entity->stats) == -1)
+	if ((!parent_path && !g_ls_options.long_format && stat(entity->path, entity->stats) == -1) || lstat(entity->path, entity->stats) == -1)
 		entity->error = errno;
 	entity->owner = get_owner(entity);
 	return (entity);
@@ -59,6 +59,7 @@ void		add_entity(t_entity *parent, char *entity_name)
 		ft_sorted_list_insert(&parent->entities,
 			ft_lstnew(entity, sizeof(t_entity)), compare_entities);
 		parent->total_blocks += entity->stats->st_blocks;
+		free(entity);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: aezzeddi <aezzeddi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 18:51:51 by aezzeddi          #+#    #+#             */
-/*   Updated: 2017/09/09 22:13:17 by aezzeddi         ###   ########.fr       */
+/*   Updated: 2017/09/12 07:49:42 by aezzeddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	show_date(t_entity *entity)
 	else
 		write(1, str + 11, 5);
 	ft_putchar(' ');
+	free(str);
 }
 
 void	show_link_dest(t_entity *entity)

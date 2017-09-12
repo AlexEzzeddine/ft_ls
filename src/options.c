@@ -6,7 +6,7 @@
 /*   By: aezzeddi <aezzeddi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 11:09:17 by aezzeddi          #+#    #+#             */
-/*   Updated: 2017/09/09 22:07:36 by aezzeddi         ###   ########.fr       */
+/*   Updated: 2017/09/12 08:00:19 by aezzeddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	parse_entity(char *entity_name)
 	if (entity->error)
 		ft_sorted_list_insert(&(g_ls_options.errors),
 			ft_lstnew(entity, sizeof(t_entity)), compare_entities);
-	else if (S_ISDIR(entity->stats->st_mode)
-		|| (S_ISLNK(entity->stats->st_mode) && !g_ls_options.long_format))
+	else if (S_ISDIR(entity->stats->st_mode))
 		ft_sorted_list_insert(&(g_ls_options.folders),
 			ft_lstnew(entity, sizeof(t_entity)), compare_entities);
 	else
 		ft_sorted_list_insert(&(g_ls_options.non_folders),
 			ft_lstnew(entity, sizeof(t_entity)), compare_entities);
+	free(entity);
 }
 
 void	parse_arguments(int argc, char **argv)
