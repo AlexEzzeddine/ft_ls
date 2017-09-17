@@ -6,7 +6,7 @@
 /*   By: aezzeddi <aezzeddi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 11:00:58 by aezzeddi          #+#    #+#             */
-/*   Updated: 2017/09/09 22:25:02 by aezzeddi         ###   ########.fr       */
+/*   Updated: 2017/09/16 18:14:25 by aezzeddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void				format_string(char *str, int max_space);
 void				format_number(int value, int max_space);
 
 time_t				*get_time(t_entity *entity);
+void				free_entity(void *content, size_t size);
 
 void				error_usage();
 void				error_no_permission(t_entity *entity);
